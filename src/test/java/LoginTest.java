@@ -54,6 +54,14 @@ public class LoginTest {
         assertEquals("Thank you for using TeamPass!\n 2.1.27.23", informationPage.getWelcomeMessage());
     }
 
+    @Test
+    public void testLogout() {
+        InformationPage informationPage = login(driver);
+
+        LoginPage loginPage = informationPage.getMenu().logout();
+        assertEquals("Please identify yourself", loginPage.getMessage());
+    }
+
     public static InformationPage login(WebDriver driver) {
         LoginPage loginPage = new LoginPage(driver);
 

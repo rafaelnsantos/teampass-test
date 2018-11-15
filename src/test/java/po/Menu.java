@@ -27,6 +27,12 @@ public class Menu extends BasePage {
     @FindBy(xpath = "//*[@id=\"main_menu\"]/a[6]")
     WebElement utilities;
 
+    @FindBy(xpath = "//*[@id=\"main_menu\"]/div[1]")//*[@id="ui-id-5"]
+    WebElement profileMenu;
+
+    @FindBy(xpath = "//*[@id=\"ui-id-5\"]")
+    WebElement logout;
+
     public Menu(WebDriver driver) {
         super(driver);
     }
@@ -60,6 +66,12 @@ public class Menu extends BasePage {
     public UtilitiesPage goToUtilities() {
         click(utilities);
         return new UtilitiesPage(driver);
+    }
+
+    public LoginPage logout() {
+        click(profileMenu);
+        click(logout);
+        return new LoginPage(driver);
     }
 
 }

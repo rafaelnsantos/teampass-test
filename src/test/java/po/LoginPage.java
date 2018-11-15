@@ -17,6 +17,9 @@ public class LoginPage extends BasePage {
     @FindBy(id = "connection_error")
     WebElement error;
 
+    @FindBy(xpath = "//*[@id=\"form_identify\"]/div/div[1]")
+    WebElement message;
+
     public LoginPage(WebDriver driver) {
         super(driver);
         driver.get("http://localhost");
@@ -45,6 +48,9 @@ public class LoginPage extends BasePage {
 
     public String getErrorMessage() {
         return error.getText();
+    }
+    public String getMessage() {
+        return message.getText();
     }
 
     public String getLogin() {
