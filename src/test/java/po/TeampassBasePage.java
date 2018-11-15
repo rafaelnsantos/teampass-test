@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 public class TeampassBasePage extends BasePage {
 
     Menu menu;
+
+    @FindBy(xpath = "//*[@id=\"main\"]/div[2]")
+    WebElement errors;
     
     public TeampassBasePage(WebDriver driver) {
         super(driver);
@@ -15,6 +18,10 @@ public class TeampassBasePage extends BasePage {
     
     public Menu getMenu() {
         return menu;
+    }
+
+    public String getErrorMessage() {
+        return errors.getText();
     }
     
 }

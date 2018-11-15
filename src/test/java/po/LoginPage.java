@@ -23,24 +23,22 @@ public class LoginPage extends BasePage {
     }    
 
     public LoginPage setLogin(String name) {
-        login.clear();
-        login.sendKeys(name);
+        type(login, name);
         return this;
     }
     
     public LoginPage setPw(String name) {
-        pw.clear();
-        pw.sendKeys(name);
+        type(pw, name);
         return this;
     }
 
     public InformationPage addValidData() {
-        submitButton.click();
+        click(submitButton);
         return new InformationPage(driver);
     }
     
     public LoginPage addInvalidData() {
-        submitButton.click();
+        click(submitButton);
         wait.until( ExpectedConditions.elementToBeClickable(error) );
         return this;
     }

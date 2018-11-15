@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import po.*;
+import po.folder.ManageFoldersPage;
+import po.role.ManageRolesPage;
+import po.user.ManageUsersPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,8 +26,8 @@ public class NavigationTest {
     @Before
     public void before() {
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("headless");
-        chromeOptions.addArguments("window-size=1200x600");
+        //chromeOptions.addArguments("headless");
+        //chromeOptions.addArguments("window-size=1200x600");
         chromeOptions.addArguments("start-maximized");
         driver = new ChromeDriver(chromeOptions);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);     

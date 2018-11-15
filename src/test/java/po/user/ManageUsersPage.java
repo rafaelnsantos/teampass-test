@@ -1,15 +1,16 @@
-package po;
+package po.user;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import po.TeampassBasePage;
 
-public class ManageFoldersPage extends TeampassBasePage {
+public class ManageUsersPage extends TeampassBasePage {
 
-    @FindBy(xpath = "/html/body/div[3]/div[3]")
+    @FindBy(css = "html body div#main div.title.ui-widget-content.ui-corner-all.tooltipstered")
     WebElement title;
 
-    public ManageFoldersPage(WebDriver driver) {
+    public ManageUsersPage(WebDriver driver) {
         super(driver);
     }
 

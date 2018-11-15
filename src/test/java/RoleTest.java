@@ -3,10 +3,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import po.*;
+import po.role.AddRoleModal;
+import po.role.ManageRolesPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -42,10 +44,8 @@ public class RoleTest {
 
         manageRolesPage.clickAddRole().setName("asd").setPasswordStrength("Weak").submit();
 
-        assertEquals("asd\n  [ Weak ]", manageRolesPage.getFistRole());
+        assertEquals("asd\n  [ Weak ]", manageRolesPage.getFirstRole());
     }
-
-
 
     @Test
     public void createDuplicateRoleTest() {
@@ -60,18 +60,18 @@ public class RoleTest {
     public void editRoleTest() {
         ManageRolesPage manageRolesPage = LoginTest.login(driver).getMenu().goToManageRoles();
 
-        manageRolesPage.clickEditRole().setName("asddw").setPasswordStrength("Strong").submit().getMenu().goToManageRoles();
+        manageRolesPage.clickEditRole().setName("asddw").setPasswordStrength("Strong").submit();
 
-        assertEquals("asddw\n  [ Strong ]", manageRolesPage.getFistRole());
+        assertEquals("asddw\n  [ Strong ]", manageRolesPage.getFirstRole());
     }
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void deleteRoleTest() {
         ManageRolesPage manageRolesPage = LoginTest.login(driver).getMenu().goToManageRoles();
 
-        manageRolesPage.clickDeleteRole().submit().getMenu().goToManageRoles();
+        manageRolesPage.clickDeleteRole().submit();
 
-        assertNull(manageRolesPage.getFistRole());
+        manageRolesPage.getFirstRole();
     }
 
 }

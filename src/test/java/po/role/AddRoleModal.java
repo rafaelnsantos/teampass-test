@@ -1,9 +1,12 @@
-package po;
+package po.role;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import po.BaseModal;
+import po.TeampassBasePage;
 
 public class AddRoleModal extends BaseModal {
 
@@ -25,19 +28,19 @@ public class AddRoleModal extends BaseModal {
     }
 
     public AddRoleModal setName(String name) {
-        this.name.clear();
-        this.name.sendKeys(name);
+        parent.type(this.name, name);
         return this;
     }
 
     public AddRoleModal setPasswordStrength(String text) {
-        Select select = new Select(passwordStrength);
-        select.selectByVisibleText(text);
+        parent.select(passwordStrength, text);
         return this;
     }
 
     public ManageRolesPage submit() {
         parent.click(submitButton);
+//        parent.wait.until( ExpectedConditions.elementToBeClickable(((ManageRolesPage)parent).title));
+        parent.wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("ui-widget-overlay ui-front")));
         return (ManageRolesPage)parent;
     }
 

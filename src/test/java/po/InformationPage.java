@@ -8,7 +8,7 @@ import java.util.List;
 
 public class InformationPage extends TeampassBasePage {
     
-    @FindBy(xpath = "/html/body/div[3]/div[3]")
+    @FindBy(css = "html body div#main div.title.ui-widget-content.ui-corner-all.tooltipstered")
     WebElement welcome;
     
     public InformationPage(WebDriver driver) {

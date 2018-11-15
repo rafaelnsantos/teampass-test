@@ -1,24 +1,26 @@
-package po;
+package po.role;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import po.TeampassBasePage;
 
 public class ManageRolesPage extends TeampassBasePage {
 
-    @FindBy(xpath = "/html/body/div[3]/div[3]")
+    @FindBy(css = "html body div#main div.title.ui-widget-content.ui-corner-all.tooltipstered")
     WebElement title;
 
-    @FindBy(xpath = "/html/body/div[3]/div[3]/button[1]")
+    @FindBy(css = "html body div#main div.title.ui-widget-content.ui-corner-all.tooltipstered button.button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only.tooltipstered")
     WebElement newRole;
 
-    @FindBy(xpath = "/html/body/div[3]/div[4]/div[1]/table/thead/tr/th[2]")
+    @FindBy(xpath = "//*[@id=\"matrice_droits\"]/table/thead/tr/th[2]")
     WebElement firstRole;
 
-    @FindBy(xpath = "/html/body/div[3]/div[4]/div[1]/table/thead/tr/th[2]/span[1]")
+    @FindBy(xpath = "//*[@id=\"matrice_droits\"]/table/thead/tr/th[2]/span[1]")
     WebElement editRoleButton;
 
-    @FindBy(xpath = "/html/body/div[3]/div[4]/div[1]/table/thead/tr/th[2]/span[2]")
+    @FindBy(xpath = "//*[@id=\"matrice_droits\"]/table/thead/tr/th[2]/span[2]")
     WebElement deleteRoleButton;
 
     public ManageRolesPage(WebDriver driver) {
@@ -44,7 +46,7 @@ public class ManageRolesPage extends TeampassBasePage {
         return new DeleteRoleModal(this);
     }
 
-    public String getFistRole(){
+    public String getFirstRole(){
         return firstRole.getText();
     }
 

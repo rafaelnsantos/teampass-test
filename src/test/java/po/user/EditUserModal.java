@@ -1,30 +1,36 @@
-package po;
+package po.user;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import po.BaseModal;
+import po.TeampassBasePage;
+import po.folder.ManageFoldersPage;
 
-public class EditRoleModal extends BaseModal {
+public class EditUserModal extends BaseModal {
 
-    @FindBy(id = "edit_role_title")
+    @FindBy(id = "edit_folder_title")
     WebElement name;
 
-    @FindBy(id = "edit_role_complexity")
+    @FindBy(id = "edit_parent_id")
+    WebElement parentFolder;
+
+    @FindBy(id = "edit_folder_complexite")
     WebElement passwordStrength;
 
-    @FindBy(xpath = "/html/body/div[13]/div[3]/div/button[1]")
+    @FindBy(xpath = "/html/body/div[12]/div[3]/div/button[2]/span")
     public WebElement submitButton;
 
-    @FindBy(id = "edit_role_error")
+    @FindBy(id = "edit_folder_show_error")
     WebElement error;
 
-    public EditRoleModal(TeampassBasePage parent) {
+    public EditUserModal(TeampassBasePage parent) {
         super(parent);
     }
 
 
-    public EditRoleModal setName(String name) {
+    public EditUserModal setName(String name) {
         this.name.clear();
         this.name.sendKeys(name);
         return this;
@@ -38,18 +44,19 @@ public class EditRoleModal extends BaseModal {
         return passwordStrength.getAttribute("value");
     }
 
-    public EditRoleModal setPasswordStrength(String text) {
+    public EditUserModal setPasswordStrength(String text) {
         Select select = new Select(passwordStrength);
         select.selectByVisibleText(text);
         return this;
     }
 
-    public ManageRolesPage submit() {
+    public ManageUsersPage submit() {
         parent.click(submitButton);
-        return (ManageRolesPage)parent;
+        parent.wait.until( ExpectedConditions.elementToBeClickable(((ManageUsersPage)parent).title) );
+        return (ManageUsersPage)parent;
     }
 
-    public EditRoleModal submitDuplicate() {
+    public EditUserModal submitWrong() {
         parent.click(submitButton);
         parent.wait.until( ExpectedConditions.elementToBeClickable(error) );
         return this;
