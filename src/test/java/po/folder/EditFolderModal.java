@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import po.BaseModal;
 import po.TeampassBasePage;
-import po.role.ManageRolesPage;
 
 public class EditFolderModal extends BaseModal {
 

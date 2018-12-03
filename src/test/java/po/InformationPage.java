@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
 public class InformationPage extends TeampassBasePage {
     
     @FindBy(css = "html body div#main div.title.ui-widget-content.ui-corner-all.tooltipstered")

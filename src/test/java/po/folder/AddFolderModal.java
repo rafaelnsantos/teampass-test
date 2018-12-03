@@ -4,10 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import po.BaseModal;
 import po.TeampassBasePage;
-import po.role.AddRoleModal;
 
 public class AddFolderModal extends BaseModal {
 
@@ -57,8 +55,6 @@ public class AddFolderModal extends BaseModal {
     public ManageFoldersPage submit() {
         parent.click(submitButton);
         parent.wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("ui-widget-overlay ui-front")));
-
-//        parent.wait.until(ExpectedConditions.elementToBeClickable(((ManageFoldersPage)parent).title));
         return (ManageFoldersPage)parent;
     }
 
