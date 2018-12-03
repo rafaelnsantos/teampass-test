@@ -12,8 +12,7 @@ import po.role.ManageRolesPage;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class RoleTest {
     private WebDriver driver;
@@ -65,13 +64,18 @@ public class RoleTest {
         assertEquals("asddw\n  [ Strong ]", manageRolesPage.getFirstRole());
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void deleteRoleTest() {
         ManageRolesPage manageRolesPage = LoginTest.login(driver).getMenu().goToManageRoles();
 
         manageRolesPage.clickDeleteRole().submit();
 
-        manageRolesPage.getFirstRole();
+        try {
+            manageRolesPage.getFirstRole();
+            fail();
+        } catch (NoSuchElementException e) {
+
+        }
     }
 
 }

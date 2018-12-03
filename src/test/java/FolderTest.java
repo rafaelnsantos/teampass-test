@@ -12,8 +12,7 @@ import po.folder.ManageFoldersPage;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class FolderTest {
     private WebDriver driver;
@@ -47,10 +46,8 @@ public class FolderTest {
         assertEquals("asd", manageFoldersPage.getFirstFolder());
     }
 
-
-
     @Test
-    public void createDuplicateRoleTest() {
+    public void createDuplicateFolderTest() {
         ManageFoldersPage manageFoldersPage = LoginTest.login(driver).getMenu().goToManageFolders();
 
         AddFolderModal modal = manageFoldersPage.clickAddRole().setName("asd").setPasswordStrength("Weak").setParentFolder("Root").submitDuplicate();
@@ -67,13 +64,18 @@ public class FolderTest {
         assertEquals("ssss", manageFoldersPage.getFirstFolder());
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void deleteFolderTest() {
         ManageFoldersPage manageFoldersPage = LoginTest.login(driver).getMenu().goToManageFolders();
 
         manageFoldersPage.clickDeleteFolder();
 
-        manageFoldersPage.getFirstFolder();
+        try {
+            manageFoldersPage.getFirstFolder();
+            fail();
+        } catch (NoSuchElementException e) {
+
+        }
     }
 
 }
